@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="systemhotelarski.Client" table="CLIENT">
+      <meta attribute="class-description">
+         This class contains the client detail. 
+      </meta>
+      <id name="id" type="int" column="ID">
+         <generator class="increment"/>
+      </id>
+      <property name="apartmentNumber" column="APARTMENTNUMBER" type="string"/>
+      <property name="buildingNumber" column="BUILDINGNUMBER" type="string"/>
+      <property name="city" column="CITY" type="string"/>
+      <property name="email" column="EMAIL" type="string"/>
+      <property name="firstName" column="FIRSTNAME" type="string"/>
+      <property name="lastName" column="LASTNAME" type="string"/>
+      <property name="street" column="STREET" type="string"/>
+      <property name="telephoneNumber" column="TELEPHONENUMBER" type="string"/>
+      <property name="password" column="PASSWD" type="string"/>      
+   </class>
+</hibernate-mapping>

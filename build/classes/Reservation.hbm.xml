@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="systemhotelarski.Reservation" table="RESERVATION">
+      <meta attribute="class-description">
+         This class contains the reservation detail. 
+      </meta>
+      <id name="id" type="int" column="ID">
+         <generator class="increment"/>
+      </id>
+      <many-to-one name="client" column="CLIENTID" />
+      <many-to-one name="room" column="ROOMID" />
+      <property name="begining" column="BEGINING" type="date"/>
+      <property name="end" column="ENDING" type="date"/>
+   </class>
+</hibernate-mapping>

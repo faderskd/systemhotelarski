@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="systemhotelarski.Offer" table="OFFER">
+      <meta attribute="class-description">
+         This class contains the offer detail. 
+      </meta>
+      <id name="id" type="int" column="ID">
+         <generator class="increment"/>
+      </id>
+      <many-to-one name="room" column="ROOMID" />
+      <property name="description" column="DESCRIPTION" type="string"/>
+      <property name="numberOfPeople" column="NUMBEROFPEOPLE" type="int"/>
+      <property name="image" column="IMAGE" type="string"/>
+      <property name="price" column="PRICE" type="double"/>
+   </class>
+</hibernate-mapping>
