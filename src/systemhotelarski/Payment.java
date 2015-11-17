@@ -1,5 +1,6 @@
 package systemhotelarski;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,5 +46,20 @@ public class Payment {
 
     public void setCost(double cost) {
         this.cost = cost;
-    }   
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        Payment p = (Payment)o;
+        return this.cost == p.cost &&
+               this.client.equals(p.client);
+    } 
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.client);
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.cost) ^ (Double.doubleToLongBits(this.cost) >>> 32));
+        return hash;
+    }
 }

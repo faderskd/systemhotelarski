@@ -63,7 +63,6 @@ public class ClientDaoJUnitTest {
     }
   
     
-    
     @After
     public void tearDown() {
         Session session = factory.openSession();
@@ -95,6 +94,7 @@ public class ClientDaoJUnitTest {
         Transaction tx = null;
         
         ClientDAO clientDao = new ClientDAO();
+        
         Integer clientId = clientDao.addClient(
             "Daniel", "Faderski", "daniel@op.pl", 
             "1234", "Warszawa", "Polna", "500", "45", "123456789"
@@ -151,18 +151,8 @@ public class ClientDaoJUnitTest {
         testList.add(other1);
         testList.add(other2);
         
-        try {
-            tx = session.beginTransaction();
-            List clients = clientDao.getAllClients();
-            assertEquals(clients, testList);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null)
-                tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+        List clients = clientDao.getAllClients();
+        assertEquals(clients, testList);
     }
     
     @Test
