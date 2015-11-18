@@ -15,20 +15,79 @@ import systemhotelarski.Room;
 
 public class RoomDAO {
     private static SessionFactory factory;
+    
+    public RoomDAO() {
+        this.factory = new Configuration().configure().
+                buildSessionFactory(); 
+    }
 
-    public int addRoom() {
-        return 1;
+    public int addRoom(String number) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        Integer roomID = null;
+        try {
+            tx = session.beginTransaction();
+            Room room = new Room(number);
+            roomID = (Integer) session.save(room);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null)
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return roomID;
     }
     
     public List getAllRooms() {
-        return null;
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List rooms = null;
+        try {
+            tx = session.beginTransaction();
+            rooms = session.createQuery("FROM Room").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return rooms;
+        }
     }
     
-    public void updateRoom() {
-        
+    public void updateRoom(Integer RoomID, String number) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Room room = (Room) session.get(Room.class, RoomID);
+            room.setNumber(number);
+            session.update(room);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
     
-    public void deleteRoom() {
-        
+    public void deleteRoom(Integer RoomID) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Room room = (Room) session.get(Room.class, RoomID);
+            session.delete(room);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 }
