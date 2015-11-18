@@ -84,9 +84,19 @@ public class OfferDAO {
         }
     }
     
-    public void deleteOffer() {
-        
+    public void deleteOffer(Integer offerID) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Offer offer = (Offer) session.get(Offer.class, offerID);
+            session.delete(offer);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
-    
-    
 }

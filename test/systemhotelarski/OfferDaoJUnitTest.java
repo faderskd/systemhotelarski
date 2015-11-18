@@ -181,4 +181,35 @@ public class OfferDaoJUnitTest {
             session.close();
         }
     }
+    
+    @Test
+    public void deleteOfferTest() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        
+        OfferDAO offerDao = new OfferDAO();
+        
+        Room room = new Room("51a");
+        
+        Offer offer = new Offer("super oferta", 4, "/home/cos.jpg", 25.0,
+                room);
+        
+        Integer offerId = offerDao.addOffer("super oferta", 4, "/home/cos.jpg",
+                25.0, room);
+        
+        offerDao.deleteOffer(offerId);
+        
+        try {
+            tx = session.beginTransaction();
+            Offer deleted = (Offer)session.get(Offer.class, offerId);
+            assertEquals(deleted, null);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null)
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }
