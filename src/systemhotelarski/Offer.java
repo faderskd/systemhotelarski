@@ -92,9 +92,9 @@ public class Offer {
             return false;
         }
         final Offer other = (Offer) obj;
-        if (this.description.equals(other.getDescription()) || 
-            this.numberOfPeople == other.getNumberOfPeople() ||
-            this.image.equals(other.getImage()) ||
+        if (this.description.equals(other.getDescription()) && 
+            this.numberOfPeople == other.getNumberOfPeople() &&
+            this.image.equals(other.getImage()) &&
             this.price== other.getPrice()) {
             return true;
         }
