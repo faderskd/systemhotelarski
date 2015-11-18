@@ -1,5 +1,6 @@
 package systemhotelarski;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -78,4 +79,36 @@ public class Offer {
         this.room = room;
     }
     
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Offer other = (Offer) obj;
+        if (this.description.equals(other.getDescription()) || 
+            this.numberOfPeople == other.getNumberOfPeople() ||
+            this.image.equals(other.getImage()) ||
+            this.price== other.getPrice()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + this.numberOfPeople;
+        hash = 67 * hash + Objects.hashCode(this.image);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        //hash = 67 * hash + Objects.hashCode(this.room);
+        return hash;
+    }
 }

@@ -15,20 +15,78 @@ import systemhotelarski.Offer;
 
 public class OfferDAO {
     private static SessionFactory factory;
+
+    public OfferDAO() {
+        this.factory = new Configuration().configure().
+                buildSessionFactory(); 
+    }
     
-    public int addOffer(){
-        return 1;
+    public int addOffer(String description, int numberOfPeople, String image,
+            double price, Room room){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        Integer offerID = null;
+        try {
+            tx = session.beginTransaction();
+            Offer offer = new Offer(description, numberOfPeople, image, price,
+                    room);
+            session.save(room);
+            offerID = (Integer) session.save(offer);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null)
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return offerID;
     }
     
     public List getAllOffers() {
-        return null;
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List offers = null;
+        try {
+            tx = session.beginTransaction();
+            offers = session.createQuery("FROM offer").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return offers;
+        }
     }
     
-    public void updateOffer() {
-        
+    public void updateOffer(Integer offerID, String description,
+            int numberOfPeople, String image, double price, Room room) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Offer offer = (Offer) session.get(Offer.class, offerID);
+            offer.setDescription(description);
+            offer.setNumberOfPeople(numberOfPeople);
+            offer.setImage(image);
+            offer.setPrice(price);
+            offer.setRoom(room);
+            
+            session.update(offer);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
     
     public void deleteOffer() {
         
     }
+    
+    
 }
