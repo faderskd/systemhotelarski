@@ -32,6 +32,7 @@ public class Client {
         this.lastName = lastName;
         this.street = street;
         this.telephoneNumber = telephoneNumber;
+        this.password = password;
     }
 
     public Client() {
