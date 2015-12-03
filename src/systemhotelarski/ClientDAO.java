@@ -24,14 +24,16 @@ public class ClientDAO {
     
     public Integer addClient(String firstName, String lastName, String email,
             String password, String city, String street, String buildingNumber,
-            String apartmentNumber, String telephoneNumber){
+            String apartmentNumber, String telephoneNumber, boolean isEmployee,
+            boolean isAdmin, boolean isManager){
         Session session = factory.openSession();
         Transaction tx = null;
         Integer clientID = null;
         try {
             tx = session.beginTransaction();
             Client client = new Client(firstName, lastName, email, password,
-            city, street, buildingNumber, apartmentNumber, telephoneNumber);
+            city, street, buildingNumber, apartmentNumber, telephoneNumber,
+            isEmployee, isAdmin, isManager);
             clientID = (Integer) session.save(client);
             tx.commit();
         } catch (HibernateException e) {
@@ -64,7 +66,8 @@ public class ClientDAO {
     
     public void updateClient(Integer clientID, String firstName, String lastName, String email,
             String password, String city, String street, String buildingNumber,
-            String apartmentNumber, String telephoneNumber) {
+            String apartmentNumber, String telephoneNumber, boolean isEmployee,
+            boolean isAdmin, boolean isManager) {
          
         Session session = factory.openSession();
         Transaction tx = null;
@@ -78,7 +81,9 @@ public class ClientDAO {
             client.setFirstName(firstName);
             client.setLastName(lastName);
             client.setStreet(street);
-            client.setTelephoneNumber(telephoneNumber);
+            client.setIsAdmin(isAdmin);
+            client.setIsManager(isManager);
+            client.setIsEmployee(isEmployee);
             session.update(client);
             tx.commit();
         } catch (HibernateException e) {
@@ -107,3 +112,4 @@ public class ClientDAO {
         }
     }
 }
+
