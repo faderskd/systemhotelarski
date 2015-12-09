@@ -28,7 +28,7 @@ public class SystemHotelarski {
         session.beginTransaction();
         
         Client client = new Client("Daniel", "Faderski", "daniel@op.pl", 
-        "1234", "Warszawa", "Polna", "500", "45", "123456789");
+        "1234", "Warszawa", "Polna", "500", "45", "123456789",false,false,false);
         Room room = new Room("501");
         Date begining = new Date(2015, 12, 23);
         Date end = new Date(2015, 12, 25);

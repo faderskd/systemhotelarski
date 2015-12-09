@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/ObslugaRezerwacji/interfejsy/IWyswietlanieRezerwacji.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/test/systemhotelarski/ClientDaoJUnitTest.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/ClientDAO.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/Offer.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/RoomDAO.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/ReservationDAO.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/Reservation.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/ObslugaLogowania/zaslepki/zaslepkaClientDAO.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/ObslugaRezerwacji/interfejsy/IWyswietlanieRezerwacji.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/systemhotelarski/Client.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/ObslugaRezerwacji/interfejsy/IDaneZarzadzaniaRezerwacjami.java</file>
+            <file>file:/C:/Users/monum_000/Documents/GitHub/systemhotelarski/src/ObslugaLogowania/ObslugaLogowania.java</file>
+        </group>
     </open-files>
 </project-private>

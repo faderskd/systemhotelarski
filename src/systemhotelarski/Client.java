@@ -10,6 +10,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Client {
+
+    @Override
+    public String toString() {
+        return "Client{" + "apartmentNumber=" + apartmentNumber + ", buildingNumber=" + buildingNumber + ", city=" + city + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", street=" + street + ", telephoneNumber=" + telephoneNumber + ", password=" + password + ", isEmployee=" + isEmployee + ", isAdmin=" + isAdmin + ", isManager=" + isManager + '}';
+    }
     private int id;
     private String apartmentNumber;
     private String buildingNumber;
