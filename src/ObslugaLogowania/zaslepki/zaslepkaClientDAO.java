@@ -15,6 +15,6 @@ public class zaslepkaClientDAO {
     
     public Client getClient(String login){
         return new Client("Daniel", "Faderski", "daniel@op.pl", 
-        "1234", "Warszawa", "Polna", "500", "45", "123456789");
+        "1234", "Warszawa", "Polna", "500", "45", "123456789",false,false,false);
     }
 }

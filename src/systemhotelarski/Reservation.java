@@ -1,6 +1,7 @@
 package systemhotelarski;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,45 @@ import systemhotelarski.Room;
 
 @Entity
 public class Reservation {
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.client);
+        hash = 37 * hash + Objects.hashCode(this.room);
+        hash = 37 * hash + Objects.hashCode(this.begining);
+        hash = 37 * hash + Objects.hashCode(this.end);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reservation other = (Reservation) obj;
+        if (!Objects.equals(this.client, other.client)) {
+            return false;
+        }
+        if (!Objects.equals(this.room, other.room)) {
+            return false;
+        }
+        if (!Objects.equals(this.begining, other.begining)) {
+            return false;
+        }
+        if (!Objects.equals(this.end, other.end)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" + "client=" + client + ", room=" + room + ", begining=" + begining + ", end=" + end + '}';
+    }
     private int id;
     private Client client;
     private Room room;

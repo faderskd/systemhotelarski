@@ -10,6 +10,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Client {
+
+    @Override
+    public String toString() {
+        return "Client{" + "apartmentNumber=" + apartmentNumber + ", buildingNumber=" + buildingNumber + ", city=" + city + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", street=" + street + ", telephoneNumber=" + telephoneNumber + ", password=" + password + ", isEmployee=" + isEmployee + ", isAdmin=" + isAdmin + ", isManager=" + isManager + '}';
+    }
     private int id;
     private String apartmentNumber;
     private String buildingNumber;
@@ -20,10 +25,14 @@ public class Client {
     private String street;
     private String telephoneNumber;
     private String password;
+    private boolean isEmployee;
+    private boolean isAdmin;
+    private boolean isManager;
 
     public Client(String firstName, String lastName, String email,
             String password, String city, String street, String buildingNumber,
-            String apartmentNumber, String telephoneNumber) {
+            String apartmentNumber, String telephoneNumber, boolean isEmployee,
+            boolean isAdmin, boolean isManager) {
         this.apartmentNumber = apartmentNumber;
         this.buildingNumber = buildingNumber;
         this.city = city;
@@ -32,7 +41,7 @@ public class Client {
         this.lastName = lastName;
         this.street = street;
         this.telephoneNumber = telephoneNumber;
-        this.password = password;
+        this.isEmployee = isEmployee;
     }
 
     public Client() {
@@ -120,6 +129,28 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+    public boolean getIsEmployee() {
+        return this.isEmployee;
+    }
+    public void setIsEmployee(boolean isEmployee) {
+        this.isEmployee = isEmployee;
+    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean isIsManager() {
+        return isManager;
+    }
+
+    public void setIsManager(boolean isManager) {
+        this.isManager = isManager;
+    }
     
     @Override
     public boolean equals(Object o ) {
@@ -149,3 +180,4 @@ public class Client {
         return hash;
     }
 }
+

@@ -24,14 +24,16 @@ public class ClientDAO {
     
     public Integer addClient(String firstName, String lastName, String email,
             String password, String city, String street, String buildingNumber,
-            String apartmentNumber, String telephoneNumber){
+            String apartmentNumber, String telephoneNumber, boolean isEmployee,
+            boolean isAdmin, boolean isManager){
         Session session = factory.openSession();
         Transaction tx = null;
         Integer clientID = null;
         try {
             tx = session.beginTransaction();
             Client client = new Client(firstName, lastName, email, password,
-            city, street, buildingNumber, apartmentNumber, telephoneNumber);
+            city, street, buildingNumber, apartmentNumber, telephoneNumber,
+            isEmployee, isAdmin, isManager);
             clientID = (Integer) session.save(client);
             tx.commit();
         } catch (HibernateException e) {
@@ -61,10 +63,38 @@ public class ClientDAO {
             return clients;
         }
     }
-    
+
+    public Client getClient(String firstName, String lastName) {
+        
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List clients = null;
+        try {
+            tx = session.beginTransaction();
+            String hsql = "FROM Client C WHERE C.firstName = :firstName" +
+                           " AND C.lastName = :lastName";
+            Query query = session.createQuery(hsql);
+            query.setParameter("firstName", firstName);
+            query.setParameter("lastName", lastName);
+            clients = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            if (clients != null && clients.size() > 0)
+                return (Client)clients.get(0);
+            return null;
+        }
+    }
+
+
     public void updateClient(Integer clientID, String firstName, String lastName, String email,
             String password, String city, String street, String buildingNumber,
-            String apartmentNumber, String telephoneNumber) {
+            String apartmentNumber, String telephoneNumber, boolean isEmployee,
+            boolean isAdmin, boolean isManager) {
          
         Session session = factory.openSession();
         Transaction tx = null;
@@ -78,7 +108,9 @@ public class ClientDAO {
             client.setFirstName(firstName);
             client.setLastName(lastName);
             client.setStreet(street);
-            client.setTelephoneNumber(telephoneNumber);
+            client.setIsAdmin(isAdmin);
+            client.setIsManager(isManager);
+            client.setIsEmployee(isEmployee);
             session.update(client);
             tx.commit();
         } catch (HibernateException e) {
@@ -107,3 +139,4 @@ public class ClientDAO {
         }
     }
 }
+

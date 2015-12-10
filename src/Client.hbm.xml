@@ -19,6 +19,9 @@
       <property name="lastName" column="LASTNAME" type="string"/>
       <property name="street" column="STREET" type="string"/>
       <property name="telephoneNumber" column="TELEPHONENUMBER" type="string"/>
-      <property name="password" column="PASSWD" type="string"/>      
+      <property name="password" column="PASSWD" type="string"/>    
+      <property name="isEmployee" column="ISEMPLOYEE" type="boolean"/>   
+      <property name="isAdmin" column="ISADMIN" type="boolean"/>  
+      <property name="isManager" column="ISMANAGER" type="boolean"/>  
    </class>
 </hibernate-mapping>
