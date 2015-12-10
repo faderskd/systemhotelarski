@@ -11,6 +11,7 @@ public class DaneHotelu {
     private int rokZalozenia;
     private ArrayList<Wlasciciel> wlasciciele;
 
+    // nie uzywać hash mapy!!!
     public DaneHotelu(HashMap<String, Object> daneHotelu) {
         this.adres = (String) daneHotelu.get("adres");
         this.liczbaPokoi = (int) daneHotelu.get("liczba pokoi");
