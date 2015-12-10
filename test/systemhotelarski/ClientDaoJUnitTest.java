@@ -97,12 +97,14 @@ public class ClientDaoJUnitTest {
         
         Integer clientId = clientDao.addClient(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client other = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         try {
@@ -128,23 +130,27 @@ public class ClientDaoJUnitTest {
         
         Integer clientId1 = clientDao.addClient(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client other1 = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Integer clientId2 = clientDao.addClient(
                 "Jan", "Kowalski",
                 "daniel@op.pl", "1234", "Warszawa", "Polna",
-                "500", "45", "123456789"
+                "500", "45", "123456789",
+                false, false, false
         );
  
         Client other2 = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );        
         
         List<Client> testList = new ArrayList<Client>();
@@ -163,16 +169,19 @@ public class ClientDaoJUnitTest {
         ClientDAO clientDao = new ClientDAO();
         Integer clientId = clientDao.addClient(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client other = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         clientDao.updateClient(clientId, "Jan", "Kowalski", "daniel@op.pl",
-                "1234", "Warszawa", "Polna", "500", "45", "123456789");
+                "1234", "Warszawa", "Polna", "500", "45", "123456789",
+                false, false, false);
         
         try {
             tx = session.beginTransaction();
@@ -197,7 +206,8 @@ public class ClientDaoJUnitTest {
         ClientDAO clientDao = new ClientDAO();
         Integer clientId = clientDao.addClient(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         clientDao.deleteClient(clientId);
         

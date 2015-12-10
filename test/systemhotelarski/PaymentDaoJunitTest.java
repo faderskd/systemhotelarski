@@ -98,12 +98,14 @@ public class PaymentDaoJunitTest {
         
         Client client1 = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client client2 = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Payment other = new Payment(client2, 100);
@@ -133,12 +135,14 @@ public class PaymentDaoJunitTest {
         
         Client client1 = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client client2 = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Payment other1 = new Payment(client1, 100);
@@ -151,12 +155,14 @@ public class PaymentDaoJunitTest {
         
         Client client3 = new Client(
             "Daniel", "Faderski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Client client4 = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Payment payment1 = new Payment(client3, 100);
@@ -198,7 +204,8 @@ public class PaymentDaoJunitTest {
         
         Client client = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Payment payment = new Payment(client, 200);
@@ -230,7 +237,8 @@ public class PaymentDaoJunitTest {
         
         Client client = new Client(
             "Jan", "Kowalski", "daniel@op.pl", 
-            "1234", "Warszawa", "Polna", "500", "45", "123456789"
+            "1234", "Warszawa", "Polna", "500", "45", "123456789",
+            false, false, false
         );
         
         Payment payment = new Payment(client, 100);

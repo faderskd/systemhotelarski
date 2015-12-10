@@ -13,13 +13,13 @@
 
    <!-- Assume test is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:postgresql://localhost/hotel
+      jdbc:postgresql://localhost/test
    </property>
    <property name="hibernate.connection.username">
-      hotel
+      test
    </property>
    <property name="hibernate.connection.password">
-      hotel
+      test
    </property>
 
    <!-- List of XML mapping files -->
