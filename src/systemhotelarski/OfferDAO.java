@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator; 
  
 import org.hibernate.HibernateException; 
+import org.hibernate.Query;
 import org.hibernate.Session; 
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
@@ -60,6 +61,31 @@ public class OfferDAO {
             return offers;
         }
     }
+    
+    public Offer getOffer(Room room) {
+        
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List offers = null;
+        try {
+            tx = session.beginTransaction();
+            String hsql = "FROM Offer O WHERE O.room = :room";
+            Query query = session.createQuery(hsql);
+            query.setParameter("room", room);
+            offers = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            if (offers != null && offers.size() > 0)
+                return (Offer)offers.get(0);
+            return null;
+        }
+    }
+    
     
     public void updateOffer(Integer offerID, String description,
             int numberOfPeople, String image, double price, Room room) {

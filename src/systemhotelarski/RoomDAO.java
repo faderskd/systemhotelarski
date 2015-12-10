@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator; 
  
 import org.hibernate.HibernateException; 
+import org.hibernate.Query;
 import org.hibernate.Session; 
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
@@ -57,6 +58,32 @@ public class RoomDAO {
             return rooms;
         }
     }
+    
+    
+    public Room getRoom(String number) {
+        
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List rooms = null;
+        try {
+            tx = session.beginTransaction();
+            String hsql = "FROM Room R WHERE R.number = :number";
+            Query query = session.createQuery(hsql);
+            query.setParameter("number", number);
+            rooms = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) 
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            if (rooms != null && rooms.size() > 0)
+                return (Room)rooms.get(0);
+            return null;
+        }
+    }
+    
     
     public void updateRoom(Integer RoomID, String number) {
         Session session = factory.openSession();
